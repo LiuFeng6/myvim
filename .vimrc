@@ -1,5 +1,5 @@
 "return" 2>&- || "exit"
-""vundle
+"vundle
 set nu
 set nocompatible    "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
 set cursorline
@@ -50,6 +50,8 @@ call plug#begin()
 	Plug 'preservim/nerdcommenter'
 	Plug 'mattn/emmet-vim'                      "html
 	Plug 'vim-syntastic/syntastic'              "语法检查
+	Plug 'godlygeek/tabular'                    "markdown语法高亮插件
+	Plug 'preservim/vim-markdown'               "markdown语法高亮插件
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,8 +65,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_seed_identifiers_with_syntax=1        "是否开启语义补全"
+let g:ycm_seed_identifiers_with_syntax=1        "是否开启语义补全
 let g:indentLine_char='┆'                       "缩进指示线
 let g:indentLine_enabled = 1                    "缩进指示线
 
