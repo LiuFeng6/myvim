@@ -44,7 +44,8 @@ call plug#begin()
 	Plug 'Yggdroot/indentLine'                  "缩进线
 	Plug 'Lokaltog/vim-powerline'               "缩进线
 	Plug 'Yggdroot/indentLine'                  "缩进线
-	Plug 'frazrepo/vim-rainbow'                 "彩虹括号改进
+	Plug 'neoclide/coc.nvim', {'branch': 'release'} "vim 代码补全
+    Plug 'frazrepo/vim-rainbow'                 "彩虹括号改进
 	Plug 'tell-k/vim-autopep8'
 	Plug 'itchyny/lightline.vim'                "文件信息
 	Plug 'preservim/nerdcommenter'
@@ -53,7 +54,25 @@ call plug#begin()
 	Plug 'godlygeek/tabular'                    "markdown语法高亮插件
 	Plug 'preservim/vim-markdown'               "markdown语法高亮插件
 call plug#end()
+"coc 配置
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-pyright', 'coc-markdownlint']
+"coc top 补全
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语法检查用于vim-syntastic/syntastic插件
 set statusline+=%#warningmsg#
