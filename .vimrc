@@ -117,9 +117,9 @@ func SetTitle()
 		call append(line(".")+3, "	> Created Time: 星期".strftime("%c"))
 		call append(line(".")+4, " ************************************************************************/")
 		call append(line(".")+5, "")
-		call append(line(".")+6, "#include<stdio.h>")
+		call append(line(".")+6, "#include <stdio.h>")
 		call append(line(".")+7, "")
-		call append(line(".")+8, "int main () {")
+		call append(line(".")+8, "int main(int argc, char *argv [] ) {")
 		call append(line(".")+9, "")
 		call append(line(".")+10, "")
 		call append(line(".")+11, "    return 0;")
@@ -134,8 +134,8 @@ func SetTitle()
         call append(line(".")+5, "")
         call append(line(".")+6, "")
 	endif
-	"新建文件后，自动定位到文件末尾
 endfunc
+	"新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal 11gg
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
