@@ -6,18 +6,17 @@ set cursorline
 set tabstop=4       " Tab键的宽度
 set laststatus=2    "文件信息显示
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示
+set encoding=utf-8
 set showcmd         " 输入的命令显示出来，看的清楚些
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离
 set autoindent      " 自动缩进
 set expandtab       " 使用空格代替制表符
 set softtabstop=4   " 统一缩进为4
 set shiftwidth=4    " 统一缩进为4
-set encoding=utf-8
-set fencs=utf-8,GB18030,ucs-bom,default,latin1
 
 syntax on           " 语法高亮显示
 autocmd InsertEnter * se cul    " 用浅色高亮当前行
-set ruler           " 显示标尺  
+set ruler           " 显示标尺
 set backspace=2     " 使回格键（backspace）正常处理indent, eol, start等
 set whichwrap+=<,>,h,l " 允许backspace和光标键跨越行边界
 
@@ -43,9 +42,8 @@ call plug#begin()
 	Plug 'liuchengxu/space-vim-dark'            "python
 	Plug 'davidhalter/jedi-vim'                 "python
 	Plug 'vim-scripts/indentpython.vim'         "python
-	Plug 'Yggdroot/indentLine'                  "缩进线
+	"Plug 'Yggdroot/indentLine'                  "缩进线
 	Plug 'Lokaltog/vim-powerline'               "缩进线
-	Plug 'Yggdroot/indentLine'                  "缩进线
 	Plug 'neoclide/coc.nvim', {'branch': 'release'} "vim 代码补全
     Plug 'frazrepo/vim-rainbow'                 "彩虹括号改进
 	Plug 'tell-k/vim-autopep8'
@@ -56,11 +54,8 @@ call plug#begin()
 	Plug 'godlygeek/tabular'                    "markdown语法高亮插件
 	Plug 'preservim/vim-markdown'               "markdown语法高亮插件
 call plug#end()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "coc 配置
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-json', 'coc-pyright', 'coc-markdownlint']
-
-
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-pyright', 'coc-markdownlint']
 "coc top 补全
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -76,14 +71,9 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-colors ron
-hi Pmenu ctermfg=7 ctermbg=236
-hi PmenuSel ctermfg=white ctermbg=32
-hi CocFloating ctermfg=black ctermbg=240
-set shortmess+=c
 
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语法检查用于vim-syntastic/syntastic插件
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -128,7 +118,6 @@ func SetTitle()
 		call append(line(".")+4, " ************************************************************************/")
 		call append(line(".")+5, "")
 		call append(line(".")+6, "#include <stdio.h>")
-		call append(line(".")+7, "")
 		call append(line(".")+8, "int main(int argc, char *argv [] ) {")
 		call append(line(".")+9, "")
 		call append(line(".")+10, "")
@@ -184,3 +173,4 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
