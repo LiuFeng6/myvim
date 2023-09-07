@@ -118,12 +118,14 @@ func SetTitle()
 		call append(line(".")+4, " ************************************************************************/")
 		call append(line(".")+5, "")
 		call append(line(".")+6, "#include <stdio.h>")
-		call append(line(".")+7, "")
-		call append(line(".")+8, "int main(int argc, char *argv [] ) {")
+		call append(line(".")+7, "#include <stdlib.h>")
+		call append(line(".")+8, "#include <unistd.h>")
 		call append(line(".")+9, "")
-		call append(line(".")+10, "")
-		call append(line(".")+11, "    return 0;")
-        call append(line(".")+12, "}")
+		call append(line(".")+10, "int main(int argc, char *argv [] ) {")
+		call append(line(".")+11, "")
+		call append(line(".")+12, "")
+		call append(line(".")+13, "    return 0;")
+        call append(line(".")+14, "}")
     elseif expand("%:e") == 'py'
 		call setline(1, "#!/usr/bin/python")
 		call append(line("."), "# -*- coding: UTF-8 -*-	")
@@ -136,7 +138,7 @@ func SetTitle()
 	endif
 endfunc
 	"新建文件后，自动定位到文件末尾
-autocmd BufNewFile * normal 11gg
+autocmd BufNewFile * normal 13gg
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Quickly Run
